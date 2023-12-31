@@ -1,5 +1,5 @@
 //
-//  MainButton.swift
+//  GFButton.swift
 //  GitHubFollowers
 //
 //  Created by Arina Postnikova on 31/12/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainButton: UIButton {
+class GFButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

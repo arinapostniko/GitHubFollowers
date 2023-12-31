@@ -1,5 +1,5 @@
 //
-//  CustomTextField.swift
+//  GFTextField.swift
 //  GitHubFollowers
 //
 //  Created by Arina Postnikova on 31/12/23.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomTextField: UITextField {
+class GFTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
