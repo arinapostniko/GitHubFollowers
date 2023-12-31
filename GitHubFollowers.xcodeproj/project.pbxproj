@@ -13,6 +13,8 @@
 		FE0DC4FB2B408C1E00A6F8C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE0DC4F92B408C1E00A6F8C5 /* LaunchScreen.storyboard */; };
 		FEF52B8E2B416AEF00503A1D /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B8D2B416AEF00503A1D /* SearchVC.swift */; };
 		FEF52B902B416B1D00503A1D /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B8F2B416B1D00503A1D /* FavoritesListVC.swift */; };
+		FEF52B922B41707C00503A1D /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B912B41707C00503A1D /* MainButton.swift */; };
+		FEF52B942B41754F00503A1D /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B932B41754F00503A1D /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		FE0DC4FC2B408C1E00A6F8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEF52B8D2B416AEF00503A1D /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		FEF52B8F2B416B1D00503A1D /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
+		FEF52B912B41707C00503A1D /* MainButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
+		FEF52B932B41754F00503A1D /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				FE0DC4FC2B408C1E00A6F8C5 /* Info.plist */,
 				FEF52B8D2B416AEF00503A1D /* SearchVC.swift */,
 				FEF52B8F2B416B1D00503A1D /* FavoritesListVC.swift */,
+				FEF52B912B41707C00503A1D /* MainButton.swift */,
+				FEF52B932B41754F00503A1D /* CustomTextField.swift */,
 			);
 			path = GitHubFollowers;
 			sourceTree = "<group>";
@@ -139,8 +145,10 @@
 			files = (
 				FEF52B902B416B1D00503A1D /* FavoritesListVC.swift in Sources */,
 				FEF52B8E2B416AEF00503A1D /* SearchVC.swift in Sources */,
+				FEF52B942B41754F00503A1D /* CustomTextField.swift in Sources */,
 				FE0DC4EF2B408C1D00A6F8C5 /* AppDelegate.swift in Sources */,
 				FE0DC4F12B408C1D00A6F8C5 /* SceneDelegate.swift in Sources */,
+				FEF52B922B41707C00503A1D /* MainButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
