@@ -30,7 +30,7 @@ class GFBodyLabel: UILabel {
         font = UIFont.preferredFont(forTextStyle: .body)
         adjustsFontSizeToFitWidth = true
         minimumScaleFactor = 0.75
-        lineBreakMode = .byCharWrapping
+        lineBreakMode = .byWordWrapping
         translatesAutoresizingMaskIntoConstraints = false
     }
 }
