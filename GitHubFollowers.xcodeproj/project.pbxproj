@@ -28,6 +28,7 @@
 		FEF52B922B41707C00503A1D /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B912B41707C00503A1D /* GFButton.swift */; };
 		FEF52B942B41754F00503A1D /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B932B41754F00503A1D /* GFTextField.swift */; };
 		FEF81CB32B42C8F500F6B7EA /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF81CB22B42C8F500F6B7EA /* UIHelper.swift */; };
+		FEF81CB92B42E96F00F6B7EA /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF81CB82B42E96F00F6B7EA /* GFEmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		FEF52B912B41707C00503A1D /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		FEF52B932B41754F00503A1D /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		FEF81CB22B42C8F500F6B7EA /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		FEF81CB82B42E96F00F6B7EA /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,13 +132,12 @@
 		FE7B1DA32B41A653004AD525 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				FEF81CB72B42E91E00F6B7EA /* Views */,
+				FEF81CB62B42E91600F6B7EA /* ViewControllers */,
+				FEF81CB52B42E90F00F6B7EA /* TextFields */,
+				FEF81CB42B42E90600F6B7EA /* Buttons */,
 				FE4F523D2B41EB02001AAA97 /* Cells */,
 				FE7B1DA62B41A8F7004AD525 /* Labels */,
-				FEF52B912B41707C00503A1D /* GFButton.swift */,
-				FEF52B932B41754F00503A1D /* GFTextField.swift */,
-				FE7B1D9E2B419B24004AD525 /* GFAlertVC.swift */,
-				FEC8BDB62B41C20700C85D48 /* GFContainerView.swift */,
-				FE4F52402B41EBA6001AAA97 /* GFAvatarImageView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -182,6 +183,40 @@
 				FEC8BDBE2B41C95900C85D48 /* NetworkManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		FEF81CB42B42E90600F6B7EA /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				FEF52B912B41707C00503A1D /* GFButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		FEF81CB52B42E90F00F6B7EA /* TextFields */ = {
+			isa = PBXGroup;
+			children = (
+				FEF52B932B41754F00503A1D /* GFTextField.swift */,
+			);
+			path = TextFields;
+			sourceTree = "<group>";
+		};
+		FEF81CB62B42E91600F6B7EA /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE7B1D9E2B419B24004AD525 /* GFAlertVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FEF81CB72B42E91E00F6B7EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEC8BDB62B41C20700C85D48 /* GFContainerView.swift */,
+				FE4F52402B41EBA6001AAA97 /* GFAvatarImageView.swift */,
+				FEF81CB82B42E96F00F6B7EA /* GFEmptyStateView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,6 +294,7 @@
 				FEF52B8E2B416AEF00503A1D /* SearchVC.swift in Sources */,
 				FEF52B942B41754F00503A1D /* GFTextField.swift in Sources */,
 				FE0DC4EF2B408C1D00A6F8C5 /* AppDelegate.swift in Sources */,
+				FEF81CB92B42E96F00F6B7EA /* GFEmptyStateView.swift in Sources */,
 				FE7B1D9F2B419B24004AD525 /* GFAlertVC.swift in Sources */,
 				FEC8BDBC2B41C4CC00C85D48 /* User.swift in Sources */,
 				FE4F523F2B41EB23001AAA97 /* FollowerCell.swift in Sources */,
