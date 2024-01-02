@@ -58,17 +58,15 @@ class GFUserInfoHeaderVC: UIViewController {
     
     func layoutUI() {
         let padding: CGFloat = 20
-        let avatarImageHeight: CGFloat = 90
         let textImagePadding: CGFloat = 12
-        let locationImageHeight: CGFloat = 20
         
         locationImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: padding),
             avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            avatarImageView.widthAnchor.constraint(equalToConstant: avatarImageHeight),
-            avatarImageView.heightAnchor.constraint(equalToConstant: avatarImageHeight),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 90),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 90),
             
             usernameLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor),
             usernameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
@@ -82,8 +80,8 @@ class GFUserInfoHeaderVC: UIViewController {
             
             locationImageView.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor),
             locationImageView.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: textImagePadding),
-            locationImageView.widthAnchor.constraint(equalToConstant: locationImageHeight),
-            locationImageView.heightAnchor.constraint(equalToConstant: locationImageHeight),
+            locationImageView.widthAnchor.constraint(equalToConstant: 20),
+            locationImageView.heightAnchor.constraint(equalToConstant: 20),
             
             locationLabel.centerYAnchor.constraint(equalTo: locationImageView.centerYAnchor),
             locationLabel.leadingAnchor.constraint(equalTo: locationImageView.trailingAnchor, constant: 5),
