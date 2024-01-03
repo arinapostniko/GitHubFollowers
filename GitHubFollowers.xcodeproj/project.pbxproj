@@ -39,6 +39,7 @@
 		FEF52B942B41754F00503A1D /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF52B932B41754F00503A1D /* GFTextField.swift */; };
 		FEF81CB32B42C8F500F6B7EA /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF81CB22B42C8F500F6B7EA /* UIHelper.swift */; };
 		FEF81CB92B42E96F00F6B7EA /* GFEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF81CB82B42E96F00F6B7EA /* GFEmptyStateView.swift */; };
+		FEFF46122B45A54800797714 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFF46112B45A54800797714 /* PersistenceManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		FEF52B932B41754F00503A1D /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		FEF81CB22B42C8F500F6B7EA /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		FEF81CB82B42E96F00F6B7EA /* GFEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFEmptyStateView.swift; sourceTree = "<group>"; };
+		FEFF46112B45A54800797714 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				FEC8BDBE2B41C95900C85D48 /* NetworkManager.swift */,
+				FEFF46112B45A54800797714 /* PersistenceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 				FEC8BDBC2B41C4CC00C85D48 /* User.swift in Sources */,
 				FE49093E2B441E1E0000A117 /* GFError.swift in Sources */,
 				FE4F523F2B41EB23001AAA97 /* FollowerCell.swift in Sources */,
+				FEFF46122B45A54800797714 /* PersistenceManager.swift in Sources */,
 				FE4F52412B41EBA6001AAA97 /* GFAvatarImageView.swift in Sources */,
 				FE9BCC2E2B447E6D006D9CC2 /* GFRepoItemVC.swift in Sources */,
 				FE4909462B4428330000A117 /* GFSecondaryTitleLabel.swift in Sources */,
