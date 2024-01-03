@@ -56,6 +56,22 @@ class FollowerListVC: UIViewController {
         collectionView.delegate = self
     }
     
+    func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
+            cell.set(follower: follower)
+            
+            return cell
+        })
+    }
+    
+    func updateData(on followers: [Follower]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(followers)
+        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
+    }
+    
     func configureSearchController() {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
@@ -63,7 +79,7 @@ class FollowerListVC: UIViewController {
         searchController.searchBar.placeholder = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.searchBarStyle = .minimal
-        searchController.searchBar.becomeFirstResponder()
+//        searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.autocapitalizationType = .none
         navigationItem.searchController = searchController
     }
@@ -94,22 +110,6 @@ class FollowerListVC: UIViewController {
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
             }
         }
-    }
-    
-    func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
-            cell.set(follower: follower)
-            
-            return cell
-        })
-    }
-    
-    func updateData(on followers: [Follower]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(followers)
-        DispatchQueue.main.async { self.dataSource.apply(snapshot, animatingDifferences: true) }
     }
     
     @objc
@@ -192,6 +192,7 @@ extension FollowerListVC: FollowerListVCDelegate {
         page = 1
         followers.removeAll()
         filteredFollowers.removeAll()
+        #warning("Fix: Unable to scroll")
         collectionView.setContentOffset(.zero, animated: true)
         getFollowers(username: username, page: page)
     }
