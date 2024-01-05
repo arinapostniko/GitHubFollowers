@@ -79,7 +79,6 @@ class FollowerListVC: UIViewController {
         searchController.searchBar.placeholder = "Search for a username"
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.searchBarStyle = .minimal
-//        searchController.searchBar.becomeFirstResponder()
         searchController.searchBar.autocapitalizationType = .none
         navigationItem.searchController = searchController
     }
@@ -192,7 +191,6 @@ extension FollowerListVC: FollowerListVCDelegate {
         page = 1
         followers.removeAll()
         filteredFollowers.removeAll()
-        #warning("Fix: Unable to scroll")
         collectionView.setContentOffset(.zero, animated: true)
         getFollowers(username: username, page: page)
     }

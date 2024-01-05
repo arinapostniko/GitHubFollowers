@@ -99,8 +99,6 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
             self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
         }
         
-//        #warning("Fix: If no favorites left show empty state")
-        
         PersistenceManager.updateWith(favorite: favorite, actionType: .remove) { [weak self] error in
             guard let self = self else { return }
             guard let error = error else { return }
