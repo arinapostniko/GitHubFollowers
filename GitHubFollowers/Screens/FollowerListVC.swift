@@ -13,7 +13,7 @@ protocol FollowerListVCDelegate: AnyObject {
 
 enum Section { case main }
 
-class FollowerListVC: UIViewController {
+class FollowerListVC: GFDataLoadingVC {
     
     var username: String!
     var followers: [Follower] = []
