@@ -171,6 +171,7 @@
 		FE7B1DA32B41A653004AD525 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				FEF6E6C32B4982040012926C /* ImageViews */,
 				FE50A2E02B483BCE00E17ED7 /* TabBar Controllers */,
 				FEF81CB72B42E91E00F6B7EA /* Views */,
 				FEF81CB62B42E91600F6B7EA /* ViewControllers */,
@@ -239,6 +240,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		FEF6E6C32B4982040012926C /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				FE4F52402B41EBA6001AAA97 /* GFAvatarImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
 		FEF81CB42B42E90600F6B7EA /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +278,6 @@
 		FEF81CB72B42E91E00F6B7EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FE4F52402B41EBA6001AAA97 /* GFAvatarImageView.swift */,
 				FEF81CB82B42E96F00F6B7EA /* GFEmptyStateView.swift */,
 				FE9BCC292B447609006D9CC2 /* GFItemInfoView.swift */,
 				FE50A2E32B48559300E17ED7 /* GFAlertContainerView.swift */,

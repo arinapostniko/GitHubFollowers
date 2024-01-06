@@ -15,14 +15,6 @@ class GFItemInfoVC: UIViewController {
     let actionButton = GFButton()
     
     var user: User!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureBackgroundView()
-        layoutUI()
-        configureStackView()
-        configureActionButton()
-    }
     
     init(user: User) {
         super.init(nibName: nil, bundle: nil)
@@ -32,6 +24,14 @@ class GFItemInfoVC: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureBackgroundView()
+        layoutUI()
+        configureStackView()
+        configureActionButton()
     }
     
     private func configureBackgroundView() {
@@ -57,6 +57,7 @@ class GFItemInfoVC: UIViewController {
         view.addSubviews(stackView, actionButton)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
         let padding: CGFloat = 20
         
         NSLayoutConstraint.activate([

@@ -19,6 +19,8 @@ class GFTextField: UITextField {
     }
     
     private func configure() {
+        translatesAutoresizingMaskIntoConstraints = false
+        
         layer.cornerRadius = 10
         layer.borderWidth = 2
         layer.borderColor = UIColor.systemGray4.cgColor
@@ -36,7 +38,5 @@ class GFTextField: UITextField {
         returnKeyType = .go
         clearButtonMode = .whileEditing
         placeholder = "Enter a username"
-        
-        translatesAutoresizingMaskIntoConstraints = false
     }
 }
