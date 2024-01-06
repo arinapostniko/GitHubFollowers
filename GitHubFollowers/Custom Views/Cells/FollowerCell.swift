@@ -9,8 +9,6 @@ import UIKit
 
 class FollowerCell: UICollectionViewCell {
     
-    static let reuseID = "FollowerCell"
-    
     let avatarImageView = GFAvatarImageView(frame: .zero)
     let userNameLabel = GFTitleLabel(textAlignment: .center, fontSize: 16)
     
@@ -21,11 +19,6 @@ class FollowerCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func set(follower: Follower) {
-        userNameLabel.text = follower.login
-        avatarImageView.downloadImage(fromURL: follower.avatarUrl)
     }
     
     private func configure() {
@@ -44,5 +37,10 @@ class FollowerCell: UICollectionViewCell {
             userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
             userNameLabel.heightAnchor.constraint(equalToConstant: 20)
         ])
+    }
+    
+    func set(follower: Follower) {
+        userNameLabel.text = follower.login
+        avatarImageView.downloadImage(fromURL: follower.avatarUrl)
     }
 }

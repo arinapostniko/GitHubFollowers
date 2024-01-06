@@ -25,7 +25,7 @@ class FavoritesListVC: GFDataLoadingVC {
     
     func configureViewController() {
         view.backgroundColor = .systemBackground
-        title = "Favorites"
+        title = Titles.favorites
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
@@ -37,7 +37,7 @@ class FavoritesListVC: GFDataLoadingVC {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
+        tableView.register(FavoriteCell.self, forCellReuseIdentifier: ReuseIDs.favoriteCell)
     }
     
     func getFavorites() {
@@ -52,14 +52,14 @@ class FavoritesListVC: GFDataLoadingVC {
                 self.updateUI(with: favorites)
                 
             case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something Went Wrong", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainThread(title: .somethingWentWrong, message: error.rawValue, buttonTitle: .ok)
             }
         }
     }
     
     func updateUI(with favorites: [Follower]) {
         if favorites.isEmpty {
-            self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
+            self.showEmptyStateView(with: .noFavorites, in: self.view)
         } else {
             self.favorites = favorites
             
@@ -78,7 +78,7 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseID) as! FavoriteCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseIDs.favoriteCell) as! FavoriteCell
         let favorite = favorites[indexPath.row]
         cell.set(favorite: favorite)
         return cell
@@ -103,13 +103,13 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .left)
                 
                 if self.favorites.isEmpty {
-                    self.showEmptyStateView(with: "No Favorites?\nAdd one on the follower screen.", in: self.view)
+                    self.showEmptyStateView(with: .noFavorites, in: self.view)
                 }
                 
                 return
             }
             
-            self.presentGFAlertOnMainThread(title: "Unable To Remove", message: error.rawValue, buttonTitle: "Ok")
+            self.presentGFAlertOnMainThread(title: .unableToRemove, message: error.rawValue, buttonTitle: .ok)
         }
     }
 }

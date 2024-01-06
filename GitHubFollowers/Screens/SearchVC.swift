@@ -11,7 +11,7 @@ class SearchVC: UIViewController {
     
     let logoImageView = UIImageView()
     let usernameTextField = GFTextField()
-    let actionButton = GFButton(backgroundColor: .systemGreen, title: "Get Followers")
+    let actionButton = GFButton(backgroundColor: .systemGreen, title: .getFollowers)
     
     var isUsernameEntered: Bool { return !usernameTextField.text!.isEmpty }
 
@@ -31,24 +31,6 @@ class SearchVC: UIViewController {
         
         usernameTextField.text = ""
         navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    func createDismissKeyboardTapGesture() {
-        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-        view.addGestureRecognizer(tap)
-    }
-    
-    @objc
-    func pushFollowerListVC() {
-        guard isUsernameEntered else {
-            presentGFAlertOnMainThread(title: "Empty Username", message: "Please enter a username. We need to know who to looking for 🙂.", buttonTitle: "Ok")
-            return
-        }
-        
-        usernameTextField.resignFirstResponder()
-        
-        let followerListVC = FollowerListVC(username: usernameTextField.text!)
-        navigationController?.pushViewController(followerListVC, animated: true)
     }
     
     func configureLogoImageView() {
@@ -85,6 +67,24 @@ class SearchVC: UIViewController {
             actionButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50),
             actionButton.heightAnchor.constraint(equalToConstant: 50)
         ])
+    }
+    
+    func createDismissKeyboardTapGesture() {
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc
+    func pushFollowerListVC() {
+        guard isUsernameEntered else {
+            presentGFAlertOnMainThread(title: .emptyUsername, message: AlertMessages.emptyUsername, buttonTitle: .ok)
+            return
+        }
+        
+        usernameTextField.resignFirstResponder()
+        
+        let followerListVC = FollowerListVC(username: usernameTextField.text!)
+        navigationController?.pushViewController(followerListVC, animated: true)
     }
 }
 

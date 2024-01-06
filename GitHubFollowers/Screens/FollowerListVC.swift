@@ -59,13 +59,13 @@ class FollowerListVC: GFDataLoadingVC {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createThreeColumnFlowLayout(in: view))
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
-        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: FollowerCell.reuseID)
+        collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: ReuseIDs.followerCell)
         collectionView.delegate = self
     }
     
     func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Follower>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, follower) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FollowerCell.reuseID, for: indexPath) as! FollowerCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIDs.followerCell, for: indexPath) as! FollowerCell
             cell.set(follower: follower)
             
             return cell
@@ -103,7 +103,7 @@ class FollowerListVC: GFDataLoadingVC {
                 self.updateUI(with: followers)
                 
             case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainThread(title: .badStuffHappened, message: error.rawValue, buttonTitle: .ok)
             }
             
             self.isLoadingMoreFollowers = false
@@ -115,8 +115,7 @@ class FollowerListVC: GFDataLoadingVC {
         self.followers.append(contentsOf: followers)
         
         if self.followers.isEmpty {
-            let message = "This user doesn't have any followers. Go follow them 😀."
-            DispatchQueue.main.async { self.showEmptyStateView(with: message, in: self.view) }
+            DispatchQueue.main.async { self.showEmptyStateView(with: .noFollowers, in: self.view) }
             return
         }
         
@@ -136,7 +135,7 @@ class FollowerListVC: GFDataLoadingVC {
                 self.addUserToFavorites(user: user)
                 
             case .failure(let error):
-                self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
+                self.presentGFAlertOnMainThread(title: .somethingWentWrong, message: error.rawValue, buttonTitle: .ok)
             }
         }
     }
@@ -148,11 +147,11 @@ class FollowerListVC: GFDataLoadingVC {
             guard let self = self else { return }
             
             guard let result = result else {
-                self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully favorited this user 🎉.", buttonTitle: "Ok")
+                self.presentGFAlertOnMainThread(title: .success, message: AlertMessages.success, buttonTitle: .ok)
                 return
             }
             
-            self.presentGFAlertOnMainThread(title: "Something went wrong", message: result.rawValue, buttonTitle: "Ok")
+            self.presentGFAlertOnMainThread(title: .somethingWentWrong, message: result.rawValue, buttonTitle: .ok)
         }
     }
 }
