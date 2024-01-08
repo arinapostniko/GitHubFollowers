@@ -19,6 +19,12 @@ enum ButtonTitles: String {
     case gitHubProfile = "GitHub Profile"
 }
 
+enum ButtonImages: String {
+    case person = "person"
+    case persons = "person.3"
+    case checkmark = "checkmark.circle"
+}
+
 enum Images {
     static let ghLogo = UIImage(named: "gh-logo")
     static let emptyStateLogo = UIImage(named: "empty-state-logo")
