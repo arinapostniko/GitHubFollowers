@@ -56,6 +56,12 @@ enum AlertMessages {
     static let success = "You have successfully favorited this user 🎉."
 }
 
+enum DefaultAlert {
+    static let title = "Something Went Wrong"
+    static let message = "We were unable to complete your task at this time. Please try again."
+    static let buttonTitle = "Ok"
+}
+
 enum EmptyStateMessages: String {
     case noFavorites = "No Favorites?\nAdd one on the follower screen."
     case noFollowers = "This user doesn't have any followers. Go follow them 😀."

@@ -52,7 +52,9 @@ class FavoritesListVC: GFDataLoadingVC {
                 self.updateUI(with: favorites)
                 
             case .failure(let error):
-                self.presentGFAlertOnMainThread(title: .somethingWentWrong, message: error.rawValue, buttonTitle: .ok)
+                DispatchQueue.main.async {
+                    self.presentGFAlert(title: .somethingWentWrong, message: error.rawValue, buttonTitle: .ok)
+                }
             }
         }
     }
@@ -109,7 +111,9 @@ extension FavoritesListVC: UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            self.presentGFAlertOnMainThread(title: .unableToRemove, message: error.rawValue, buttonTitle: .ok)
+            DispatchQueue.main.async {
+                self.presentGFAlert(title: .unableToRemove, message: error.rawValue, buttonTitle: .ok)
+            }
         }
     }
 }

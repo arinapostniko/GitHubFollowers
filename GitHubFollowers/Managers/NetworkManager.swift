@@ -14,84 +14,47 @@ class NetworkManager {
     private let baseURL = "https://api.github.com"
     private let followersPerPage = 100
     let cache = NSCache<NSString, UIImage>()
+    let decoder = JSONDecoder()
     
-    private init () {}
+    private init () {
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
+    }
     
-    func getFollowers(for username: String, page: Int, completed: @escaping (Result<[Follower], GFError>) -> Void) {
+    func getFollowers(for username: String, page: Int) async throws -> [Follower] {
         let endpoint = baseURL + "/users/\(username)/followers?per_page=\(followersPerPage)&page=\(page)"
-        fetchData(endpoint: endpoint, completed: completed)
+        return try await fetchData(endpoint: endpoint)
     }
-    
-    func getUserInfo(for username: String, completed: @escaping (Result<User, GFError>) -> Void) {
+
+    func getUserInfo(for username: String) async throws -> User {
         let endpoint = baseURL + "/users/\(username)"
-        fetchData(endpoint: endpoint, completed: completed)
+        return try await fetchData(endpoint: endpoint)
     }
     
-    func downloadImage(from urlString: String, completed: @escaping (UIImage?) -> Void) {
+    func fetchData<T: Decodable>(endpoint: String) async throws -> T {
+        guard let url = URL(string: endpoint) else { throw GFError.invalidUsername }
+        let (data, response) = try await URLSession.shared.data(from: url)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw GFError.invalidResponse }
+        
+        do {
+            return try decoder.decode(T.self, from: data)
+        } catch {
+            throw GFError.invalidData
+        }
+    }
+    
+    func downloadImage(from urlString: String) async -> UIImage? {
         let cacheKey = NSString(string: urlString)
+        if let image = cache.object(forKey: cacheKey) { return image }
+        guard let url = URL(string: urlString) else { return nil }
         
-        if let image = cache.object(forKey: cacheKey) {
-            completed(image)
-            return
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            guard let image = UIImage(data: data) else { return nil }
+            cache.setObject(image, forKey: cacheKey)
+            return image
+        } catch {
+            return nil
         }
-        
-        guard let url = URL(string: urlString) else {
-            completed(nil)
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
-            
-            guard let self = self,
-                  error == nil,
-                  let response = response as? HTTPURLResponse, response.statusCode == 200,
-                  let data = data,
-                  let image = UIImage(data: data) else {
-                completed(nil)
-                return
-            }
-            
-            self.cache.setObject(image, forKey: cacheKey)
-            completed(image)
-        }
-        
-        task.resume()
-    }
-    
-    func fetchData<T: Decodable>(endpoint: String, completed: @escaping (Result<T, GFError>) -> Void) {
-        guard let url = URL(string: endpoint) else {
-            completed(.failure(.invalidUsername))
-            return
-        }
-        
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            
-            if let _ = error {
-                completed(.failure(.unableToComplete))
-                return
-            }
-            
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completed(.failure(.invalidResponse))
-                return
-            }
-            
-            guard let data = data else {
-                completed(.failure(.invalidData))
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                decoder.dateDecodingStrategy = .iso8601
-                let decodedData = try decoder.decode(T.self, from: data)
-                completed(.success(decodedData))
-            } catch {
-                completed(.failure(.invalidData))
-            }
-        }
-        
-        task.resume()
     }
 }
