@@ -13,8 +13,9 @@ class NetworkManager {
     
     private let baseURL = "https://api.github.com"
     private let followersPerPage = 100
+    
     let cache = NSCache<NSString, UIImage>()
-    let decoder = JSONDecoder()
+    private let decoder = JSONDecoder()
     
     private init () {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
